@@ -1,1 +1,99 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<style>
+    body {
+        background: rgb(0,0,0)
+    }
+</style>
+
+<body >
+    <form id="form1" method="post" action="registrar.php">
+        <section class="d-flex justify-content-center">
+            <h1 style="background-color: rgb(0, 0, 0); color:rgb(255, 255, 255)">Registro de usuarios </h1>
+        </section>
+        <section class="d-flex justify-content-center">
+            <div class="card col-sm-6 p-3" style="background-color: rgb(221, 234, 225);">
+                <div class="mb-3">
+                    <h2 style="background-color: rgb(0, 0, 0); color:rgb(255, 255, 255)">Datos</h2>
+                </div>
+                <div class="mb-2">
+                    
+                    Nombres:
+                    <input type="text" name="txt_nombres" id="txt_nombres" title="Se requiere un nombre para el registro" required>
+                    <br><br>
+                    
+                    <input type="submit" value="Agregar" class="btn btn-success">
+                    
+                </div>
+            </div>
+        </section>
+        <br>
+        <section >
+            <div class="card col-sm-12 p-3" style="background-color: rgb(221, 234, 225);">
+                <div >
+                    <h2 style="background-color: rgb(0, 0, 0); color:rgb(255, 255, 255)">Usuarios registrados</h2>
+                    <div >
+                        <table class="table table-success table-striped" >
+                            <tr border="1">
+                                <td>Tipo doc</td>
+                                <td>Numero identificación</td>
+                                <td>fecha de nacimiento</td>
+                                <td>Lugar nacimiento</td>
+                                <td>Primer Apellido</td>
+                                <td>Segundo Apellido</td>
+                                <td>Nombre</td>
+                                <td>otros Nombres</td>
+                                <td>Correo</td>
+                                <td>Teléfono</td>
+                            </tr>
+                            <?php
+                            $sql2="SELECT * from registros";
+                            $result=mysqli_query($conexion,$sql2);
+                            while($mostrar=mysqli_fetch_array($result)){
+                            ?>
+                            <tr border="1">
+                                <td><?php echo $mostrar['tipoidentificacion'] ?></td>
+                                <td><?php echo $mostrar['documento'] ?></td>
+                                <td><?php echo $mostrar['fecha'] ?></td>
+                                <td><?php echo $mostrar['lugarnacimiento'] ?></td>
+                                <td><?php echo $mostrar['primerapellido'] ?></td>
+                                <td><?php echo $mostrar['segundoapellido'] ?></td>
+                                <td><?php echo $mostrar['primernombre'] ?></td>
+                                <td><?php echo $mostrar['otrosnombres'] ?></td>
+                                <td><?php echo $mostrar['correo'] ?></td>
+                                <td><?php echo $mostrar['telefono'] ?></td>
+                            </tr>
+                            <?php
+                            }
+                            ?>
+
+
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <br>
+    </div>
+    </div>
+    <br>
+
+
+</body>
+
+</html><!DOCTYPE html>
