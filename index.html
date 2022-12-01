@@ -32,53 +32,23 @@
                     <input type="text" name="txt_nombres" id="txt_nombres" title="Se requiere un nombre para el registro" required>
                     <br><br>
                     
-                    <input type="submit" value="Agregar" class="btn btn-success">
+                    <input type="button" value="Agregar" class="btn btn-success" onclick="add()">
                     
                 </div>
             </div>
         </section>
         <br>
+        
         <section >
+            
             <div class="card col-sm-12 p-3" style="background-color: rgb(221, 234, 225);">
+                
                 <div >
                     <h2 style="background-color: rgb(0, 0, 0); color:rgb(255, 255, 255)">Usuarios registrados</h2>
                     <div >
-                        <table class="table table-success table-striped" >
-                            <tr border="1">
-                                <td>Tipo doc</td>
-                                <td>Numero identificación</td>
-                                <td>fecha de nacimiento</td>
-                                <td>Lugar nacimiento</td>
-                                <td>Primer Apellido</td>
-                                <td>Segundo Apellido</td>
-                                <td>Nombre</td>
-                                <td>otros Nombres</td>
-                                <td>Correo</td>
-                                <td>Teléfono</td>
-                            </tr>
-                            <?php
-                            $sql2="SELECT * from registros";
-                            $result=mysqli_query($conexion,$sql2);
-                            while($mostrar=mysqli_fetch_array($result)){
-                            ?>
-                            <tr border="1">
-                                <td><?php echo $mostrar['tipoidentificacion'] ?></td>
-                                <td><?php echo $mostrar['documento'] ?></td>
-                                <td><?php echo $mostrar['fecha'] ?></td>
-                                <td><?php echo $mostrar['lugarnacimiento'] ?></td>
-                                <td><?php echo $mostrar['primerapellido'] ?></td>
-                                <td><?php echo $mostrar['segundoapellido'] ?></td>
-                                <td><?php echo $mostrar['primernombre'] ?></td>
-                                <td><?php echo $mostrar['otrosnombres'] ?></td>
-                                <td><?php echo $mostrar['correo'] ?></td>
-                                <td><?php echo $mostrar['telefono'] ?></td>
-                            </tr>
-                            <?php
-                            }
-                            ?>
+                        <div id="divmostrar">
 
-
-                        </table>
+                        </div>
                         
                     </div>
                 </div>
@@ -93,7 +63,7 @@
     </div>
     <br>
 
-
+    <script src="./js/index.js"></script>
 </body>
 
 </html><!DOCTYPE html>
