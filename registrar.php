@@ -6,9 +6,7 @@
     $fechanacimiento=$_POST["dt_nacimiento"];
     $paisnaci=$_POST["txt_counacimiento"];
     $apellido=$_POST["txt_apellido"];
-    $sapellido=$_POST["txt_sapellido"];
     $nombre=$_POST["txt_nombre"];
-    $onombre=$_POST["txt_othername"];
     $correo=$_POST["email"];
     $telefono=$_POST["nmb_phone"];
 
@@ -19,9 +17,7 @@
         '".$fechanacimiento."',
         '".$paisnaci."',
         '".$apellido."',
-        '".$sapellido."',
         '".$nombre."',
-        '".$onombre."',
         '".$correo."',
         '".$telefono."'
         )";
