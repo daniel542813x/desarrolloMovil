@@ -1,22 +1,32 @@
 <?php
     $con =new mysqli("localhost","root","6aaf57025705c786","usuarios") or die ('error ');
 
-    $tipodoc=$_POST["tipodoc2"];
-    $numeroidentificacion=$_POST["nmb_identity2"];
-    $fechanacimiento=$_POST["dt_nacimiento2"];
-    $paisnaci=$_POST["txt_counacimiento2"];
-    $apellido=$_POST["txt_apellido2"];
-    $nombre=$_POST["txt_nombre2"];
-    $correo=$_POST["email2"];
-    $telefono=$_POST["nmb_phone2"];
+    // Takes raw data from the request
+    $json = file_get_contents('php://input');
 
+    // Converts it into a PHP object
+    $data = json_decode($json);
 
-
-    $sql="UPDATE registros SET fecha='".$fechanacimiento."',lugarnacimiento='".$paisnaci."',primerapellido='".$apellido."',primernombre='".$nombre."',correo='".$correo."',telefono='".$telefono."' WHERE documento='".$numeroidentificacion."' ";
     
-    header("Location: https://desarrollom.deiwerchaleal.com");
+    $tipodoc=$data->tipoDocumento;
+    $numeroidentificacion=$data->numeroDocumento;
+    $numeroidentificacionAnterior=$data->documentoAnterior;
+    $fechanacimiento=$data->fechaNacimiento;
+    $paisnaci=$data->lugarNacimiento;
+    $apellido=$data->primerApellido;
+    $sapellido=$data->segundoApellido;
+    $nombre=$data->primerNombre;
+    $onombre=$data->segundoNombre;
+    $correo=$data->email;
+    $telefono=$data->numeroTelefono;
+
+
+
+    $sql="UPDATE registros SET tipoidentificacion='".$tipodoc."',documento='".$numeroidentificacion."',fecha='".$fechanacimiento."',lugarnacimiento='".$paisnaci."',primerapellido='".$apellido."',segundoapellido='".$sapellido."',primernombre='".$nombre."',otrosnombres='".$onombre."',correo='".$correo."',telefono='".$telefono."' WHERE documento='".$numeroidentificacionAnterior."' ";
+    
+    //header("Location: https://desarrollom.deiwerchaleal.com");
     mysqli_query($con,$sql);
 
-
+    echo "regreso ".$nombre.",".$numeroidentificacion.",".  $fechanacimiento.",".$paisnaci.",". $apellido.",".$numeroidentificacionAnterior;
     
     ?>

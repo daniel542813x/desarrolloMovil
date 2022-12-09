@@ -1,14 +1,24 @@
 <?php
     $con =new mysqli("localhost","root","6aaf57025705c786","usuarios") or die ('error ');
 
-    $tipodoc=$_POST["tipodoc"];
-    $numeroidentificacion=$_POST["nmb_identity"];
-    $fechanacimiento=$_POST["dt_nacimiento"];
-    $paisnaci=$_POST["txt_counacimiento"];
-    $apellido=$_POST["txt_apellido"];
-    $nombre=$_POST["txt_nombre"];
-    $correo=$_POST["email"];
-    $telefono=$_POST["nmb_phone"];
+    // Takes raw data from the request
+    $json = file_get_contents('php://input');
+
+    // Converts it into a PHP object
+    $data = json_decode($json);
+
+    $n= $data->tipoDocumento;
+    
+    $tipodoc=$data->tipoDocumento;
+    $numeroidentificacion=$data->numeroDocumento;
+    $fechanacimiento=$data->fechaNacimiento;
+    $paisnaci=$data->lugarNacimiento;
+    $apellido=$data->primerApellido;
+    $sapellido=$data->segundoApellido;
+    $nombre=$data->primerNombre;
+    $onombre=$data->segundoNombre;
+    $correo=$data->email;
+    $telefono=$data->numeroTelefono;
 
 
     $sql="insert into registros values(
@@ -17,14 +27,14 @@
         '".$fechanacimiento."',
         '".$paisnaci."',
         '".$apellido."',
+        '".$sapellido."',
         '".$nombre."',
+        '".$onombre."',
         '".$correo."',
         '".$telefono."'
         )";
     
-    header("Location: https://desarrollom.deiwerchaleal.com");
+    //header("Location: https://desarrollom.deiwerchaleal.com");
     mysqli_query($con,$sql);
-
-
-    
-    ?>
+    echo $n;
+?>
